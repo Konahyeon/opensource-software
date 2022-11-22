@@ -3,6 +3,7 @@
 
 import sys
 import pandas as pd
+from sklearn.model_selection import train_test_split
 
 def load_dataset(dataset_path):
 	#To-Do: Implement this function
@@ -11,15 +12,20 @@ def load_dataset(dataset_path):
 
 def dataset_stat(dataset_df):	
 	#To-Do: Implement this function
-	n_feats = dataset_df.shape[1] - 1
+	n_feats = dataset_df.drop(columns="target", axis=1).shape[1]
 	n_class0 = dataset_df.groupby('target').size()[0]
 	n_class1 = dataset_df.groupby('target').size()[1]
 	return n_feats, n_class0, n_class1
 
-
 def split_dataset(dataset_df, testset_size):
 	#To-Do: Implement this function
 	print("\n안뇽1")
+	x = dataset_df.drop(columns="target", axis=1)
+	y = dataset_df["target"]
+
+	x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=testset_size, random_state=2)
+	return x_train, x_test, y_train, y_test
+
 
 def decision_tree_train_test(x_train, x_test, y_train, y_test):
 	#To-Do: Implement this function
