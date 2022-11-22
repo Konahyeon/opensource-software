@@ -2,24 +2,36 @@
 # https://github.com/Konahyeon/opensource-software.git
 
 import sys
+import pandas as pd
 
 def load_dataset(dataset_path):
 	#To-Do: Implement this function
+	dataset_df = pd.read_csv(dataset_path)
+	return dataset_df
 
 def dataset_stat(dataset_df):	
 	#To-Do: Implement this function
+	n_feats = dataset_df.shape[1] - 1
+	n_class0 = dataset_df.groupby('target').size()[0]
+	n_class1 = dataset_df.groupby('target').size()[1]
+	return n_feats, n_class0, n_class1
+
 
 def split_dataset(dataset_df, testset_size):
 	#To-Do: Implement this function
+	print("\n안뇽1")
 
 def decision_tree_train_test(x_train, x_test, y_train, y_test):
 	#To-Do: Implement this function
+	print("\n안뇽2")
 
 def random_forest_train_test(x_train, x_test, y_train, y_test):
 	#To-Do: Implement this function
+	print("\n안뇽3")
 
 def svm_train_test(x_train, x_test, y_train, y_test):
 	#To-Do: Implement this function
+	print("\n안뇽4")
 
 def print_performances(acc, prec, recall):
 	#Do not modify this function!
